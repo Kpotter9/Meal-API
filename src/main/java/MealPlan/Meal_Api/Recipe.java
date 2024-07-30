@@ -2,7 +2,6 @@ package MealPlan.Meal_Api;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,18 +15,32 @@ import lombok.NoArgsConstructor;
 public class Recipe {
     @Id
     private String id;
-    
-    
-    private String Name;
+
+    private String name;
 
     private String url;
 
-    private String Description;
+    private int rattings;
 
-    private String Author;
+    private String category;
 
-    private List<String> Ingredients;
+    private String image;
 
-    private List<String> Method;
+    private String description;
+
+    private String author;
+
+    private List<String> ingredients;
+
+    private List<String> steps;
+
+    private int serves;
+
+    private Object nutrients;
+
+    private Object times;
+
+    private String difficult;
+
     
 }
