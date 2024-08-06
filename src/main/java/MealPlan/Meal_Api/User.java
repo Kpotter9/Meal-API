@@ -27,6 +27,8 @@ public class User {
     private String password;
     private String email;
     private List<Plan> plans;
+    @DocumentReference
+    private List<Item> itemIds; 
 
 
     public User(String username, String password, String email){
@@ -41,21 +43,22 @@ public class User {
     String getPassword(){
         return this.password;
     }
-    @Data
-    class Plan{
-        private Recipe recipe;
-        private String date;
 
-        public Plan(Recipe recipe, int days){
-            this.recipe = recipe;
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-            Calendar c = Calendar.getInstance();
-            c.add(Calendar.DATE,days);
-            this.date = sdf.format(c.getTime());
+    public List<Plan> getPlans(int days) {
+        List<Plan> plansForDays = new ArrayList<Plan>();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DATE,days);
+        String date = sdf.format(c.getTime());
 
-        }
-       
+        for(int i=0;i<plans.size();i++){
+            if(date.equals(plans.get(i).getDate())){
+                plansForDays.add(plans.get(i));
+            }
     }
+    return plansForDays;
+}
+    
 
     
 

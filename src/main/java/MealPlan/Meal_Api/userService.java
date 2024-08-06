@@ -1,5 +1,8 @@
 package MealPlan.Meal_Api;
 
+import java.util.List;
+
+import org.bson.types.ObjectId;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -37,7 +40,6 @@ public class userService {
 }       
     public User checkUser(String user, String password ){
         if(this.userRepository.findByUsername(user).isPresent()){
-            System.out.println("ran");
             User userFound=this.userRepository.findByUsername(user).get();
             Boolean check=encryptor.checkPassword(password,userFound.getPassword());
              if (check){
@@ -49,9 +51,8 @@ public class userService {
 
     }
     public Plan addPlan(String recipe, String days, String user) {
-
         
-            System.out.println("WOW");
+        
             Plan plan= new Plan(recipeService.OneRecipe(recipe).get(),Integer.parseInt(days));
             mongoTemplate.update(User.class)
                         .matching(Criteria.where("username").is(user))
@@ -62,5 +63,22 @@ public class userService {
         
         
     }
+    public List<Plan> getPlan(String days,String user) {
+       
+      
 
+        int count=Integer.parseInt(days);
+        
+        User userFound=this.userRepository.findByUsername(user).get();
+       
+        List<Plan> plans=userFound.getPlans(count);
+        
+
+
+        return plans;
+    }
+    public List<Item> getList(String user){
+        User userFound=this.userRepository.findByUsername(user).get();
+        return userFound.getItemIds();
+    }
 }
