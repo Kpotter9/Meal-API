@@ -57,7 +57,7 @@ public class ItemService {
         Item item = (itemRepository.findById(new ObjectId(id)).get());
         mongoTemplate.upsert(new Query(Criteria.where("username").is(uname))
 
-        ,new Update().pull("itemIds",new ObjectId(id)),User.class);
+        ,new Update().pull("itemIds",item),User.class);
        itemRepository.delete(item);
        
         

@@ -79,7 +79,7 @@ public class userService {
     }
     public List<Item> getList(String user){
         User userFound=this.userRepository.findByUsername(user).get();
-        return userFound.getItemIds();
+        return userFound.geiItemIds();
     }
 
 }
