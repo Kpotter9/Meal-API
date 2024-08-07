@@ -3,7 +3,6 @@ package MealPlan.Meal_Api;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,7 @@ public class ItemService {
         List<Item> newItems =itemRepository.insert(newItemsToAdd);
         mongoTemplate.update(User.class)
         .matching(Criteria.where("username").is(uname))
-        .apply(new Update().push("itemIds").each(newItems)).first();
+        .apply(new Update().push("itemIds").value(newItems)).first();
 
         return newItems;}
 
