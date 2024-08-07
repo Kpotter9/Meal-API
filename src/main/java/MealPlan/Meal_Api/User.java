@@ -32,6 +32,8 @@ public class User {
         this.password =  password;
         this.email = email;
         plans = new ArrayList<Plan>();
+        itemIds=new ArrayList<Item>(); 
+
         
         
     }
