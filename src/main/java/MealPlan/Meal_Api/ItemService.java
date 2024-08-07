@@ -47,7 +47,7 @@ public class ItemService {
         List<Item> newItems =itemRepository.insert(newItemsToAdd);
         mongoTemplate.update(User.class)
         .matching(Criteria.where("username").is(uname))
-        .apply(new Update().push("itemIds").value(newItems)).first();
+        .apply(new Update().push("itemIds").each(newItems)).first();
 
         return newItems;}
 
