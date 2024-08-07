@@ -51,7 +51,6 @@ public class userService {
     public Plan addPlan(String recipe, String days, String user) {
 
         
-            System.out.println("WOW");
             Plan plan= new Plan(recipeService.OneRecipe(recipe).get(),Integer.parseInt(days));
             mongoTemplate.update(User.class)
                         .matching(Criteria.where("username").is(user))
