@@ -1,6 +1,5 @@
 package MealPlan.Meal_Api;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ public class User {
     private String password;
     private String email;
     private List<Plan> plans;
-    @DocumentReference
     private List<Item> itemIds; 
 
 

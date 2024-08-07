@@ -52,10 +52,7 @@ public class userService {
     }
     public Plan addPlan(String recipe, String days, String user) {
         
-<<<<<<< HEAD
-=======
-        
->>>>>>> parent of 896dfb2 ( commit)
+
             Plan plan= new Plan(recipeService.OneRecipe(recipe).get(),Integer.parseInt(days));
             mongoTemplate.update(User.class)
                         .matching(Criteria.where("username").is(user))
