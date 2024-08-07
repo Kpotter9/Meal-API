@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -58,6 +57,10 @@ public class User {
     }
     return plansForDays;
 }
+
+    public List<Item> geiItemIds() {
+        return this.itemIds;
+    }
     
 
     
