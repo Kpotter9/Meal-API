@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
+    
     @Id
     @Field(targetType=FieldType.OBJECT_ID)
     private String id;

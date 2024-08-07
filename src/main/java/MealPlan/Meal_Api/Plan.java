@@ -5,28 +5,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Plan{
         private List<Recipe> recipe;
         private String date;
         private String day;
 
 
-            
-        
-
-        public Plan(Recipe recipe, int day){
+        public Plan(Recipe recipe, int days){
             this.recipe = new ArrayList<Recipe>();
             this.recipe.add(recipe);
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
             Calendar c = Calendar.getInstance();
-            c.add(Calendar.DATE,day);
+            c.add(Calendar.DATE,days);
             this.date = sdf.format(c.getTime());
 
             int count = c.get(Calendar.DAY_OF_WEEK);
